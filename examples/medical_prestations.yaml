@@ -1,0 +1,219 @@
+# Medical Prestations CSV configuration
+# Simulates medical service records with realistic healthcare data
+# Note: Financial fields (cost_amount, insurance_coverage, patient_payment) are 
+# generated independently. In a real system, these would have calculated relationships.
+num_rows: 50
+
+columns:
+  # Unique prestation identifier
+  - name: prestation_id
+    type: integer
+    pattern: sequential
+    start: 10001
+    step: 1
+  
+  # Patient identifier
+  - name: patient_id
+    type: integer
+    pattern: random
+    min: 1000
+    max: 9999
+  
+  # Medical procedure/service code (simulates CPT-like codes)
+  - name: procedure_code
+    type: choice
+    pattern: random
+    choices:
+      - '99213'  # Office visit, established patient
+      - '99214'  # Office visit, detailed
+      - '99215'  # Office visit, comprehensive
+      - '99283'  # Emergency department visit
+      - '99284'  # Emergency department visit, high severity
+      - '70450'  # CT scan, head
+      - '71020'  # Chest X-ray
+      - '80053'  # Comprehensive metabolic panel
+      - '85025'  # Complete blood count
+      - '93000'  # Electrocardiogram
+      - '97110'  # Physical therapy
+      - '36415'  # Blood draw
+  
+  # Description of the service
+  - name: service_description
+    type: choice
+    pattern: random
+    choices:
+      - 'Office consultation'
+      - 'Emergency care'
+      - 'Diagnostic imaging'
+      - 'Laboratory test'
+      - 'Physical therapy session'
+      - 'Preventive care visit'
+      - 'Follow-up examination'
+      - 'Specialized consultation'
+      - 'Minor procedure'
+      - 'Diagnostic procedure'
+  
+  # Medical department/specialty
+  - name: department
+    type: choice
+    pattern: random
+    choices:
+      - 'Cardiology'
+      - 'Emergency Medicine'
+      - 'General Practice'
+      - 'Radiology'
+      - 'Laboratory'
+      - 'Physical Therapy'
+      - 'Orthopedics'
+      - 'Neurology'
+      - 'Internal Medicine'
+      - 'Pediatrics'
+  
+  # Service date
+  - name: service_date
+    type: date
+    pattern: random
+    start_date: '2024-01-01'
+    end_date: '2024-12-31'
+    format: '%Y-%m-%d'
+  
+  # Service time
+  - name: service_time
+    type: choice
+    pattern: random
+    choices:
+      - '08:00'
+      - '08:30'
+      - '09:00'
+      - '09:30'
+      - '10:00'
+      - '10:30'
+      - '11:00'
+      - '11:30'
+      - '13:00'
+      - '13:30'
+      - '14:00'
+      - '14:30'
+      - '15:00'
+      - '15:30'
+      - '16:00'
+      - '16:30'
+  
+  # Duration in minutes
+  - name: duration_minutes
+    type: integer
+    pattern: random
+    min: 10
+    max: 120
+  
+  # Provider/practitioner ID
+  - name: provider_id
+    type: integer
+    pattern: random
+    min: 100
+    max: 500
+  
+  # Provider name (simplified)
+  - name: provider_name
+    type: choice
+    pattern: random
+    choices:
+      - 'Dr. Smith'
+      - 'Dr. Johnson'
+      - 'Dr. Williams'
+      - 'Dr. Brown'
+      - 'Dr. Jones'
+      - 'Dr. Garcia'
+      - 'Dr. Martinez'
+      - 'Dr. Davis'
+      - 'Dr. Miller'
+      - 'Dr. Wilson'
+      - 'Dr. Anderson'
+      - 'Dr. Taylor'
+  
+  # Service cost in dollars
+  - name: cost_amount
+    type: float
+    pattern: random
+    min: 50.0
+    max: 5000.0
+    decimals: 2
+  
+  # Insurance coverage amount
+  - name: insurance_coverage
+    type: float
+    pattern: random
+    min: 0.0
+    max: 4500.0
+    decimals: 2
+  
+  # Patient responsibility amount
+  - name: patient_payment
+    type: float
+    pattern: random
+    min: 0.0
+    max: 1000.0
+    decimals: 2
+  
+  # Prestation status
+  - name: status
+    type: choice
+    pattern: random
+    choices:
+      - 'completed'
+      - 'pending'
+      - 'billed'
+      - 'paid'
+      - 'cancelled'
+  
+  # Payment status
+  - name: payment_status
+    type: choice
+    pattern: random
+    choices:
+      - 'paid_in_full'
+      - 'partially_paid'
+      - 'unpaid'
+      - 'pending_insurance'
+      - 'insurance_approved'
+  
+  # Priority level
+  - name: priority
+    type: choice
+    pattern: random
+    choices:
+      - 'routine'
+      - 'urgent'
+      - 'emergency'
+  
+  # Facility location
+  - name: facility
+    type: choice
+    pattern: random
+    choices:
+      - 'Main Hospital'
+      - 'North Clinic'
+      - 'South Clinic'
+      - 'East Medical Center'
+      - 'West Urgent Care'
+  
+  # Room/location within facility
+  - name: room_number
+    type: choice
+    pattern: random
+    choices:
+      - 'Room 101'
+      - 'Room 102'
+      - 'Room 201'
+      - 'Room 202'
+      - 'Lab A'
+      - 'Lab B'
+      - 'Imaging Suite 1'
+      - 'Imaging Suite 2'
+      - 'ER Bay 1'
+      - 'ER Bay 2'
+  
+  # Whether follow-up is needed
+  - name: followup_required
+    type: boolean
+    pattern: random
