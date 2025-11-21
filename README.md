@@ -209,7 +209,6 @@ python test_csv_generator.py -v
 
 - Python 3.6+
 - PyYAML
-- Faker (for future enhancements)
 
 ## License
 

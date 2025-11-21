@@ -174,15 +174,13 @@ class TestCSVGenerator(unittest.TestCase):
         generator = CSVGenerator(config)
         rows = generator.generate()
         
-        # Check all floats are within range and have correct decimals
+        # Check all floats are within range and properly rounded
         for i in range(1, len(rows)):
             value = rows[i][0]
             self.assertGreaterEqual(value, 0.0)
             self.assertLessEqual(value, 100.0)
-            # Check decimal places (convert to string and count)
-            decimal_str = str(value).split('.')
-            if len(decimal_str) > 1:
-                self.assertLessEqual(len(decimal_str[1]), 2)
+            # Check that rounding to 2 decimals doesn't change the value
+            self.assertEqual(value, round(value, 2))
 
 
 if __name__ == '__main__':
