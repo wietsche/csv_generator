@@ -1,0 +1,24 @@
+# Simple CSV configuration example
+num_rows: 5
+
+columns:
+  - name: id
+    type: integer
+    pattern: sequential
+    start: 1
+    step: 1
+  
+  - name: username
+    type: string
+    pattern: random
+    length: 8
+  
+  - name: age
+    type: integer
+    pattern: random
+    min: 18
+    max: 65
+  
+  - name: is_active
+    type: boolean
+    pattern: random

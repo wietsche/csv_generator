@@ -1,0 +1,61 @@
+# Advanced CSV configuration example with multiple data types
+num_rows: 10
+
+columns:
+  - name: user_id
+    type: integer
+    pattern: sequential
+    start: 1000
+    step: 1
+  
+  - name: email
+    type: string
+    pattern: random
+    length: 12
+  
+  - name: status
+    type: choice
+    pattern: random
+    choices:
+      - active
+      - inactive
+      - pending
+      - suspended
+  
+  - name: balance
+    type: float
+    pattern: random
+    min: 0.0
+    max: 10000.0
+    decimals: 2
+  
+  - name: created_date
+    type: date
+    pattern: random
+    start_date: '2023-01-01'
+    end_date: '2024-12-31'
+    format: '%Y-%m-%d'
+  
+  - name: country
+    type: choice
+    pattern: random
+    choices:
+      - USA
+      - Canada
+      - UK
+      - Germany
+      - France
+      - Japan
+  
+  - name: role
+    type: string
+    pattern: list
+    values:
+      - admin
+      - user
+      - moderator
+  
+  - name: company
+    type: string
+    pattern: fixed
+    value: 'Acme Corp'
