@@ -1,0 +1,29 @@
+# Example showing different date formats
+num_rows: 5
+
+columns:
+  - name: id
+    type: integer
+    pattern: sequential
+    start: 1
+  
+  - name: date_iso
+    type: date
+    pattern: random
+    start_date: '2024-01-01'
+    end_date: '2024-12-31'
+    format: '%Y-%m-%d'
+  
+  - name: date_us
+    type: date
+    pattern: random
+    start_date: '2024-01-01'
+    end_date: '2024-12-31'
+    format: '%m/%d/%Y'
+  
+  - name: timestamp
+    type: date
+    pattern: random
+    start_date: '2024-01-01'
+    end_date: '2024-12-31'
+    format: '%Y-%m-%d %H:%M:%S'
