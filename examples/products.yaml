@@ -1,0 +1,70 @@
+# Product Data CSV Generator Configuration
+
+output_file_name: "products"
+
+number_of_records: 30
+
+file_split_number: 1
+
+schema:
+  - name: product_id
+    type: integer
+    generator:
+      method: sequential
+      start: 1
+  
+  - name: sku
+    type: string
+    generator:
+      method: pattern
+      pattern: "SKU-{product_id:05d}"
+  
+  - name: product_name
+    type: string
+    generator:
+      method: random
+      source: product_names
+  
+  - name: category
+    type: string
+    generator:
+      method: choice
+      choices:
+        - Electronics
+        - Clothing
+        - Home & Garden
+        - Sports
+        - Books
+  
+  - name: price
+    type: float
+    generator:
+      method: random
+      min: 9.99
+      max: 999.99
+      precision: 2
+  
+  - name: stock_quantity
+    type: integer
+    generator:
+      method: random
+      min: 0
+      max: 500
+  
+  - name: in_stock
+    type: boolean
+    generator:
+      method: random
+      probability: 0.9
+  
+  - name: manufacturer
+    type: string
+    generator:
+      method: random
+      source: company_names
+  
+  - name: description
+    type: string
+    generator:
+      method: fixed
+      value: "High quality product"

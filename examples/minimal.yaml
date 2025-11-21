@@ -1,0 +1,15 @@
+# Minimal CSV Generator Configuration
+# This is the simplest possible configuration
+
+output_file_name: "minimal_output"
+
+number_of_records: 5
+
+file_split_number: 1
+
+schema:
+  - name: id
+    type: integer
+    generator:
+      method: sequential
+      start: 1

@@ -1,0 +1,70 @@
+# User Data CSV Generator Configuration
+
+output_file_name: "users"
+
+number_of_records: 50
+
+file_split_number: 1
+
+schema:
+  - name: user_id
+    type: integer
+    generator:
+      method: sequential
+      start: 1000
+  
+  - name: username
+    type: string
+    generator:
+      method: pattern
+      pattern: "user_{user_id}"
+  
+  - name: email
+    type: email
+    generator:
+      method: random
+      domain: "testcompany.com"
+  
+  - name: first_name
+    type: string
+    generator:
+      method: random
+      source: first_names
+  
+  - name: last_name
+    type: string
+    generator:
+      method: random
+      source: last_names
+  
+  - name: age
+    type: integer
+    generator:
+      method: random
+      min: 18
+      max: 65
+  
+  - name: country
+    type: string
+    generator:
+      method: choice
+      choices:
+        - USA
+        - Canada
+        - UK
+        - Germany
+        - France
+  
+  - name: is_premium
+    type: boolean
+    generator:
+      method: random
+      probability: 0.3
+  
+  - name: signup_date
+    type: date
+    generator:
+      method: random
+      format: "%Y-%m-%d"
+      start_date: "2023-01-01"
+      end_date: "2024-12-31"

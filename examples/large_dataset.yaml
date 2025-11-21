@@ -1,0 +1,54 @@
+# Large Dataset with File Splitting Example
+# This configuration generates 1000 records split across 5 files
+# Output files: large_dataset_1.csv, large_dataset_2.csv, ..., large_dataset_5.csv
+# Each file will contain 200 records (1000 / 5)
+
+output_file_name: "large_dataset"
+
+number_of_records: 1000
+
+file_split_number: 5
+
+schema:
+  - name: record_id
+    type: integer
+    generator:
+      method: sequential
+      start: 1
+  
+  - name: transaction_id
+    type: string
+    generator:
+      method: pattern
+      pattern: "TXN-{record_id:08d}"
+  
+  - name: customer_email
+    type: email
+    generator:
+      method: random
+  
+  - name: amount
+    type: float
+    generator:
+      method: random
+      min: 10.0
+      max: 5000.0
+      precision: 2
+  
+  - name: timestamp
+    type: date
+    generator:
+      method: random
+      format: "%Y-%m-%d %H:%M:%S"
+      start_date: "2024-01-01"
+      end_date: "2024-12-31"
+  
+  - name: status
+    type: string
+    generator:
+      method: choice
+      choices:
+        - completed
+        - pending
+        - failed
+        - refunded

@@ -1,0 +1,25 @@
+# Simple CSV Generator Configuration Example
+
+output_file_name: "simple_data"
+
+number_of_records: 10
+
+file_split_number: 1
+
+schema:
+  - name: id
+    type: integer
+    generator:
+      method: sequential
+      start: 1
+  
+  - name: name
+    type: string
+    generator:
+      method: random
+      source: full_names
+  
+  - name: email
+    type: email
+    generator:
+      method: random

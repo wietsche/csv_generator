@@ -1,0 +1,97 @@
+# YAML Configuration Schema for CSV Generator
+# This file defines the structure for CSV test data generation
+
+# Output file name (without extension, .csv will be added automatically)
+output_file_name: "output_data"
+
+# Number of records to generate
+number_of_records: 100
+
+# File split number: Split output into multiple files if specified
+# If set to a number > 1, records will be distributed across that many files
+# Example: file_split_number: 3 will create output_data_1.csv, output_data_2.csv, output_data_3.csv
+# If not specified or set to 1, all records go into a single file
+file_split_number: 1
+
+# Schema defines the structure of the CSV file
+schema:
+  # Each field definition contains:
+  # - name: Column name in the CSV
+  # - type: Data type (string, integer, float, boolean, date, email, etc.)
+  # - generator: How to generate values (optional, depends on type)
+  
+  - name: id
+    type: integer
+    generator:
+      method: sequential
+      start: 1
+  
+  - name: username
+    type: string
+    generator:
+      method: pattern
+      pattern: "user_{id}"
+  
+  - name: email
+    type: email
+    generator:
+      method: random
+      domain: "example.com"
+  
+  - name: first_name
+    type: string
+    generator:
+      method: random
+      source: first_names
+  
+  - name: last_name
+    type: string
+    generator:
+      method: random
+      source: last_names
+  
+  - name: age
+    type: integer
+    generator:
+      method: random
+      min: 18
+      max: 80
+  
+  - name: salary
+    type: float
+    generator:
+      method: random
+      min: 30000.0
+      max: 150000.0
+      precision: 2
+  
+  - name: is_active
+    type: boolean
+    generator:
+      method: random
+      probability: 0.8  # 80% chance of true
+  
+  - name: created_at
+    type: date
+    generator:
+      method: random
+      format: "%Y-%m-%d"
+      start_date: "2020-01-01"
+      end_date: "2024-12-31"
+  
+  - name: department
+    type: string
+    generator:
+      method: choice
+      choices:
+        - Engineering
+        - Sales
+        - Marketing
+        - HR
+        - Finance
+  
+  - name: notes
+    type: string
+    generator:
+      method: fixed
+      value: "Sample note"
