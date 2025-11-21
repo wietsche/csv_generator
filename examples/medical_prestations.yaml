@@ -1,5 +1,7 @@
 # Medical Prestations CSV configuration
 # Simulates medical service records with realistic healthcare data
+# Note: Financial fields (cost_amount, insurance_coverage, patient_payment) are 
+# generated independently. In a real system, these would have calculated relationships.
 num_rows: 50
 
 columns:
